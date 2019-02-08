@@ -6,7 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: 'Jeff',
+      name: 'Todd Bot',
     }
   }
 
@@ -21,7 +21,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div>
         <button onClick={() => this.handleNameUpdate()}>Update Name</button>
         <h1>My name: {this.state.name}</h1>
       </div>
