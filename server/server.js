@@ -1,13 +1,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-//IMPORT YOUR CONTROLLER HERE
+const nc = require('./Controllers/name_controller')
+//RENAME YOUR CONTROLLER TO ANYTHING YOU WANT
 
 const app = express()
 app.use(bodyParser.json())
 
-app.get('/api/name', (req, res) => {
-  res.status(200).send('Bryan')
-})
+app.get('/api/name', nc.sendName)
 
 // USE A DIFFERENT PORT IF YOU WANT
 const PORT = 3333
