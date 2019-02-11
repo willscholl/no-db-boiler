@@ -1,0 +1,9 @@
+.WorkoutList {
+  background: orange;
+}
+
+.CompletedInputs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

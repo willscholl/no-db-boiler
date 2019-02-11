@@ -1,0 +1,39 @@
+.Body {
+  padding-top: 90px;
+  background: grey;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+ .List {
+  padding: 10px;
+  background: blue;
+  width: 50%
+ }
+
+ .Addbar {
+   display: flex;
+   flex-direction: column;
+ }
+
+ header{
+  position: fixed;
+  margin: 0;
+  top: 0;
+  width: 100%;
+  height: 90px;
+  background: green;
+  text-align: center;
+ }
+
+ header h2 {
+   margin: 10px;
+ }
+
+ .Addbar input, .Addbar button{
+  margin-top: 10px
+ }
+
+
+

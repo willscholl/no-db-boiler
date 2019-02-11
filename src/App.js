@@ -1,29 +1,14 @@
 import React, { Component } from 'react';
+import Tracker from './components/Tracker.js'
 import './App.css';
-import axios from 'axios'
+
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: 'Todd Bot',
-    }
-  }
-
-  handleNameUpdate() {
-    axios.get('/api/name')
-      .then((res) => {
-        this.setState({ name: res.data })
-      })
-      .catch((err) => {
-        console.log(`BERRORS `, err);
-      })
-  }
+  
   render() {
     return (
       <div>
-        <button onClick={() => this.handleNameUpdate()}>Update Name</button>
-        <h1>My name: {this.state.name}</h1>
+        <Tracker />
       </div>
     );
   }

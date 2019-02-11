@@ -1,14 +1,20 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const nc = require('./Controllers/name_controller')
-//RENAME YOUR CONTROLLER TO ANYTHING YOU WANT
+const ctrl = require('./Controllers/workoutController')
 
-const app = express()
+const app = express();
 app.use(bodyParser.json())
 
-app.get('/api/name', nc.sendName)
+app.get('/api/workouts', ctrl.getWorkouts);
 
-// USE A DIFFERENT PORT IF YOU WANT
-const PORT = 3333
-// CHANGE THE CONSOLE LOG IF YOU WANT
-app.listen(PORT, () => console.log(`The magic is happening on ${PORT}`))
+app.post('/api/workout', ctrl.createWorkout)
+
+app.put(`/api/workout/:id`, ctrl.updateWorkout)
+
+app.delete(`/api/workout/:id`, ctrl.deleteWorkout)
+
+
+
+
+const PORT = 3030
+app.listen(PORT, () => console.log(`Banging on port ${PORT}`))
