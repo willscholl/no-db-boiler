@@ -14,7 +14,9 @@ class Tracker extends Component {
       workoutname: "",
       sets: "",
       reps: "",
-      weight: ""
+      weight: "",
+      seconds: 0,
+      miliseconds: 0
     };
 
     this.handleDelete = this.handleDelete.bind(this);
@@ -46,25 +48,46 @@ class Tracker extends Component {
   }
 
   handleMg(val) {
-    // console.log(val);
     this.setState({
       mg: val
     });
   }
 
+
+  startTimer = () => {
+    if(!this.myInterval){
+      this.myInterval = setInterval(this.handleTimer, 10)
+    }
+  }
+
+  handleTimer = () => {
+    let {seconds, miliseconds} = this.state
+    miliseconds++
+    if (miliseconds >= 100) {
+      miliseconds = 0
+      seconds += 1
+    }
+    this.setState({miliseconds, seconds})
+  }
+
+  stopTimer() {
+    clearInterval(this.myInterval)
+    this.myInterval = null
+  }
+
   componentDidMount() {
     axios.get("/api/workouts").then(res => {
-      // console.log(res.data);
       this.setState({
         workouts: res.data
       });
+
     });
   }
 
   handleCreateWorkout() {
-    const { mg, workoutname, sets, reps, weight } = this.state;
+    const { seconds, miliseconds, mg, workoutname, sets, reps, weight } = this.state;
     axios
-      .post("/api/workout", { mg, workoutname, sets, reps, weight })
+      .post("/api/workout", { seconds, miliseconds, mg, workoutname, sets, reps, weight })
       .then(res => {
         // console.log(res.data)
         this.setState({
@@ -74,7 +97,9 @@ class Tracker extends Component {
           workoutname: "",
           sets: "",
           reps: "",
-          weight: ""
+          weight: "",
+          seconds: 0,
+          miliseconds: 0
         });
       })
       .catch(err => {
@@ -98,6 +123,7 @@ class Tracker extends Component {
       });
     });
   }
+
 
   render() {
     return (
@@ -136,7 +162,14 @@ class Tracker extends Component {
               onChange={e => this.handleWeight(e.target.value)}
               value={this.state.weight}
             />
-            <button onClick={() => this.handleCreateWorkout()}>Add</button>
+          <div className="buttonlayout">
+            <button onClick={() => this.startTimer()}>Start</button>
+            <button onClick={() => this.stopTimer()}>Stop</button>
+            <div>
+              <button onClick={() => this.handleCreateWorkout()}>Add</button>
+            </div>
+            <p className="timer">Time: {this.state.seconds}:{this.state.miliseconds}</p>
+          </div>
           </div>
         </div>
 

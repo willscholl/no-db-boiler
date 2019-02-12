@@ -5,7 +5,9 @@ const workouts = [
     workoutname: "DB Bench",
     sets: 3,
     reps: 15,
-    weight: 50
+    weight: 50,
+    seconds: 60,
+    miliseconds: 5
   }
 ];
 

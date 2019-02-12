@@ -1,9 +1,33 @@
 .WorkoutList {
-  background: orange;
+  margin-right: 15px;
+  margin-top: 10px;
+  padding: 5px;
+  background: rgba(218, 112, 214, 0.712);
 }
 
 .CompletedInputs {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 32px
 }
+
+.Mg-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px
+}
+
+.buttonsicon i{
+  font-size: 20px;
+}
+
+.Buttons {
+  border: 0;
+  background: transparent;
+}
+
+
+
+

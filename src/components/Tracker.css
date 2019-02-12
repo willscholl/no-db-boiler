@@ -1,20 +1,25 @@
 .Body {
+  background-image: url("https://media.giphy.com/media/CNTygGJqvo1Ak/giphy.gif");
+  background-size: auto;
   padding-top: 90px;
-  background: grey;
   width: 100%;
-  height: 100vh;
+  height: 200vh;
   display: flex;
 }
 
  .List {
+  height: 30vh;
+  margin: 10px;
   padding: 10px;
-  background: blue;
+  padding-right: 10px;
+  background: rgba(32, 178, 171, 0.336);
   width: 50%
  }
 
  .Addbar {
-   display: flex;
-   flex-direction: column;
+  /* padding: 10px; */
+  display: flex;
+  flex-direction: column;
  }
 
  header{
@@ -23,7 +28,7 @@
   top: 0;
   width: 100%;
   height: 90px;
-  background: green;
+  background: rgba(218, 165, 32, 0.856);
   text-align: center;
  }
 
@@ -33,6 +38,11 @@
 
  .Addbar input, .Addbar button{
   margin-top: 10px
+ }
+
+ .timer {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 5px;
  }
 
 

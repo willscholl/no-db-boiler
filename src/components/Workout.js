@@ -13,7 +13,9 @@ class Workout extends Component {
       workoutname: props.workout.workoutname,
       sets: props.workout.sets,
       reps: props.workout.reps,
-      weight: props.workout.weight
+      weight: props.workout.weight,
+      seconds: props.workout.seconds,
+      miliseconds: props.workout.miliseconds
     };
   }
 
@@ -33,7 +35,13 @@ class Workout extends Component {
     const { workout, deleteWorkout, id } = this.props;
     return this.state.editing ? (
       <div className="WorkoutList">
-        <h4>{workout.mg}</h4>
+        <div className="Mg-wrapper">
+          <h1>{workout.mg}</h1>
+          <div className='buttonsicon'>
+            <button className="Buttons" onClick={() => {this.saveEdit(workout.id)}}><i className="far fa-save"></i></button>
+            <button className="Buttons" onClick={() => deleteWorkout(id)}><i class="fas fa-trash-alt"></i></button>
+          </div>
+        </div>
           <div className="CompletedInputs">
             <p>Muscle Group: <input onChange={e => this.setState({
               workoutname: e.target.value
@@ -47,20 +55,24 @@ class Workout extends Component {
             <p>Weight: <input onChange={e => this.setState({
               weight: e.target.value
             })} value={this.state.weight}/></p>
-            <button onClick={() => {this.saveEdit(workout.id)}}>Save</button>
-            <button onClick={() => deleteWorkout(id)}>Delete</button>
+            <p> Time: {this.state.seconds}:{this.state.miliseconds} </p>
           </div>
       </div>
     ) : (
       <div className="WorkoutList">
-        <h1>{workout.mg}</h1>
+        <div className="Mg-wrapper">
+          <h1>{workout.mg}</h1>
+            <div className='buttonsicon'>
+              <button className="Buttons" onClick={() => {this.saveEdit(workout.id)}}><i class="fas fa-edit"></i></button>
+              <button className="Buttons" onClick={() => deleteWorkout(id)}><i className="fas fa-trash-alt"></i></button>
+            </div>
+        </div>
         <div className="CompletedInputs">
           <p>{workout.workoutname}</p>
           <p>Sets: {workout.sets}</p>
           <p>Reps: {workout.reps}</p>
           <p>Weight: {workout.weight}</p>
-          <button onClick={()=> {this.setEdit(workout.id)}}>Edit</button>
-          <button onClick={() => deleteWorkout(id)}>Delete</button>
+          <p>Time: {this.state.seconds}:{this.state.miliseconds}</p>
         </div>
       </div>
     );
